@@ -1,16 +1,46 @@
-let firstCard = 10;
-let secondCard = 6;
 
-let sum = firstCard + secondCard;
-let cards = [firstCard, secondCard]
+let sum = 0;
+let cards = []
 let hasBlackJack = false;
-let isAlive = true;
+let isAlive = false;
 let message="";
 let mSg = document.getElementById("msg");
 let sumC = document.getElementById("sumcard");
 let card = document.getElementById("cards");
 
+function getRandomcard() {
+    let number = Math.floor(Math.random() * 13) + 1;
+    /*
+    if (number == 1){
+        return 11
+    }
+    else if (11 <= number && number <= 13){
+        return 10
+    }
+    else {
+    return number;
+
+    }
+   */
+    if (number > 10){
+        return 10
+    }
+    else if (number===1){
+        return 11
+    }
+    else{
+        return number
+    }
+    
+    //return number;
+}
+
 function start() {
+    isAlive = true;
+    let firstCard = getRandomcard();
+    let secondCard = getRandomcard();
+    cards = [firstCard, secondCard];
+    sum = firstCard + secondCard;
     play();
 }
 
@@ -21,7 +51,7 @@ function play() {
         card.textContent += cards[x] + " ";
     }
 
-    if (sum <= 21){
+    if (sum < 21){
         message = "Do you want to draw a new card?";
     }
     else if (sum === 21){
@@ -38,7 +68,7 @@ function play() {
 }
 
 function newcard() {
-    let thirdCard = 3;
+    let thirdCard = getRandomcard();
     sum += thirdCard;
     cards.push(thirdCard)
     play();
