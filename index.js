@@ -16,7 +16,10 @@ function start() {
 
 function play() {
     sumC.textContent = "Sum:" + " " + sum;
-    card.textContent = "Cards:" + " " + cards[0] + " " + cards[1];
+    card.textContent = "Cards: ";
+    for (let x=0; x<cards.length; x++){
+        card.textContent += cards[x] + " ";
+    }
 
     if (sum <= 21){
         message = "Do you want to draw a new card?";
