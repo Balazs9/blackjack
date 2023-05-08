@@ -8,6 +8,21 @@ let mSg = document.getElementById("msg");
 let sumC = document.getElementById("sumcard");
 let card = document.getElementById("cards");
 
+// let addName = prompt("Please enter your name");
+
+function getPlayer() {
+    
+}
+
+let player = {
+    name : " ",
+    chips : 0
+}
+
+
+let playerName = document.getElementById("playername");
+playerName.textContent = player.name + ": $" + player.chips;
+
 function getRandomcard() {
     let number = Math.floor(Math.random() * 13) + 1;
     /*
@@ -68,9 +83,12 @@ function play() {
 }
 
 function newcard() {
-    let thirdCard = getRandomcard();
-    sum += thirdCard;
-    cards.push(thirdCard)
-    play();
+    if (isAlive === true && hasBlackJack === false){
+
+        let thirdCard = getRandomcard();
+        sum += thirdCard;
+        cards.push(thirdCard)
+        play();
+    }
     
 }
